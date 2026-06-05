@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Công cụ Quét Danh Sách Reels Facebook từ Profile & Fanpage — ScanReels</title>
+    <meta name="description"
+        content="Quét và tải hàng loạt video Reels Facebook từ bất kỳ Trang cá nhân (Profile) hoặc Fanpage công khai nào — nhanh chóng, an toàn, không cần đăng nhập và hoàn toàn miễn phí.">
+    <meta name="keywords"
+        content="quét reels facebook, tai reels profile fb, tai video reels tu uid, download reels profile, get list reels fb, quet video reels page, scanreels fb">
+    <link rel="stylesheet" href="style.css?v=1.1.0">
+    <link rel="icon" type="image/png" href="logo.png">
+
+    <!-- Structured Data (JSON-LD) for Google SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "ScanReels Facebook Scanner",
+      "url": "http://localhost/index.html",
+      "description": "Quét và tải hàng loạt video Reels Facebook từ Trang cá nhân hoặc Fanpage công khai — nhanh chóng, an toàn và hoàn toàn miễn phí.",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires HTML5 compatible browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "VND"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "Tải video Reels Facebook có cần cài đặt thêm phần mềm gì không?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Không. Công cụ hoạt động trực tuyến trên mọi trình duyệt web (Chrome, Safari, Firefox, Edge) trên điện thoại và máy tính mà không cần cài thêm bất kỳ ứng dụng nào khác."
+        }
+      },{
+        "@type": "Question",
+        "name": "Video tải xuống có bị giới hạn số lượng hay tốc độ tải không?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Hoàn toàn không. Bạn có thể tải bao nhiêu video tùy thích, tốc độ tải phụ thuộc vào đường truyền mạng của bạn, hệ thống của chúng tôi không giới hạn băng thông."
+        }
+      },{
+        "@type": "Question",
+        "name": "Tôi có phải trả phí khi sử dụng công cụ tải video Reels này không?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Không, công cụ này là hoàn toàn miễn phí. Chúng tôi không yêu cầu đóng phí hay đăng ký tài khoản VIP để tải video chất lượng cao."
+        }
+      }]
+    }
+    </script>
+</head>
+
+<body>
+    <div class="bg-glow-wrapper">
+        <div class="bg-glow-top"></div>
+        <div class="bg-glow-blob-1"></div>
+        <div class="bg-glow-blob-2"></div>
+    </div>
+
+    <!-- Warning Banner -->
+    <div class="warning-banner">
+        <marquee behavior="scroll" direction="left" scrollamount="5">
+            <span class="warning-badge">CẢNH BÁO</span>
+            Nghiêm cấm sử dụng công cụ vào mục đích vi phạm pháp luật. Ban quản trị hoàn toàn không chịu trách nhiệm đối với bất kỳ hành vi sai trái hay vi phạm nào từ phía người dùng.
+        </marquee>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="#" class="logo" id="header-logo">
+                <img src="logo.png" alt="ScanReels Facebook Logo" class="logo-img">
+                <div class="logo-text">
+                    <span class="blue">ScanReels</span> <span class="dark">Facebook</span>
+                </div>
+            </a>
+
+            <!-- Navigation Links -->
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#hero" class="nav-link active">Trang chủ</a></li>
+                <li><a href="#how-to-download" class="nav-link">Cách quét video</a></li>
+                <li><a href="#faq" class="nav-link">FAQ</a></li>
+                <li><a href="#features" class="nav-link">Hỗ trợ</a></li>
+                <li><a href="https://www.facebook.com/khumnumm" target="_blank" class="nav-link">Liên hệ</a></li>
+            </ul>
+
+            <!-- Theme Toggle -->
+            <button class="theme-toggle" id="theme-toggle" aria-label="Chuyển chế độ sáng/tối">
+                <svg class="sun-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+                    stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+                <svg class="moon-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+                    stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+            </button>
+
+
+
+            <!-- Hamburger Button for Mobile -->
+            <button class="menu-toggle" id="menu-toggle" aria-label="Mở menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="hero">
+            <div class="container">
+                <!-- Badge Info -->
+                <div class="badge-wrapper">
+                    <div class="badge">
+                        <span class="lightning">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19 9h-6l3-7L5 13h6l-3 7z" />
+                            </svg>
+                        </span>
+                        <span class="dot"></span>
+                        <span>Miễn phí</span>
+                        <span class="divider">•</span>
+                        <span>Không giới hạn</span>
+                        <span class="divider">•</span>
+                        <span>Tải nhanh HD</span>
+                    </div>
+                </div>
+
+                <!-- Titles -->
+                <h1 class="hero-title">
+                    Quét & Tải Hàng Loạt Video Reels Facebook — <br>
+                    <span class="gradient-text-green">Từ Trang Cá Nhân & Fanpage</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Nhập UID hoặc dán đường dẫn Trang cá nhân/Fanpage Facebook, quét toàn bộ danh sách video Reels chất lượng cao <strong>HD, Full HD</strong> về thiết bị của bạn trọn vẹn và nhanh chóng.
+                </p>
+
+                <!-- Tool Card -->
+                <div class="tool-card-container">
+                    <div class="tool-card">
+                        <div class="tool-card-header">
+                            <span class="green-dot"></span>
+                            Quét danh sách video Reels Facebook
+                        </div>
+
+                        <!-- Form -->
+                        <form id="reels-form" onsubmit="return false;">
+                            <div class="form-grid">
+                                <div class="input-wrapper url-wrapper">
+                                    <div class="input-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                            <circle cx="12" cy="7" r="4"></circle>
+                                        </svg>
+                                    </div>
+                                    <input type="text" class="input-field" id="reels-url"
+                                        placeholder="Nhập UID hoặc link Trang cá nhân/Fanpage Facebook..."
+                                        autocomplete="off" required>
+                                    <button type="button" id="btn-paste-url" class="btn-paste-url" title="Dán từ Clipboard">
+                                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                                            <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                                        </svg>
+                                        <span>Dán</span>
+                                    </button>
+                                </div>
+                                <div class="controls-wrapper">
+                                    <div class="input-wrapper amount-wrapper" id="amount-wrapper">
+                                        <div class="input-icon" id="amount-icon">
+                                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                            </svg>
+                                        </div>
+                                         <!-- Custom Select Dropdown -->
+                                         <div class="custom-select-container" id="amount-custom-select-container">
+                                             <div class="custom-select-trigger">
+                                                 <span>10 Reels</span>
+                                                 <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="arrow-icon">
+                                                     <polyline points="6 9 12 15 18 9"></polyline>
+                                                 </svg>
+                                             </div>
+                                             <div class="custom-select-options">
+                                                 <div class="custom-option active" data-value="10">10 Reels</div>
+                                                 <div class="custom-option" data-value="20">20 Reels</div>
+                                                 <div class="custom-option" data-value="30">30 Reels</div>
+                                                 <div class="custom-option" data-value="50">50 Reels</div>
+                                                 <div class="custom-option" data-value="custom">Tùy chỉnh...</div>
+                                             </div>
+                                         </div>
+                                         <input type="hidden" id="reels-amount-select" value="10">
+                                        <!-- Numeric Input (hidden initially) -->
+                                        <input type="number" id="reels-amount-input" class="input-field" min="1" max="500" value="10" placeholder="Nhập số..." style="display: none;">
+                                        <!-- Back button to select (hidden initially) -->
+                                        <button type="button" id="btn-back-to-select" class="btn-back-to-select" style="display: none;" title="Quay lại chọn nhanh">
+                                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                                <polyline points="12 19 5 12 12 5"></polyline>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <button type="submit" class="btn-submit" id="btn-submit">
+                                        <span>Quét video</span>
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                            <circle cx="11" cy="11" r="8"></circle>
+                                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+
+                        <div class="tool-card-footer">
+                            <span class="lightbulb">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7zm2.85 11.1l-.85.6V16h-4v-2.3l-.85-.6C7.8 12.16 7 10.63 7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.63-.8 3.16-2.15 4.1z" />
+                                </svg>
+                            </span>
+                            <span>Hỗ trợ quét danh sách video Reels của mọi Trang cá nhân hoặc Fanpage công khai.</span>
+                        </div>
+
+                        <!-- Result Section (Collapsible) -->
+                        <div class="result-container" id="result-container">
+                            <div class="result-card">
+                                <div class="result-header-row">
+                                    <div class="result-card-title">
+                                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                                        </svg>
+                                        <span id="result-status-title">Đã quét danh sách Reels!</span>
+                                    </div>
+                                    <div class="author-badge" id="author-badge-container">
+                                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                            <circle cx="12" cy="7" r="4"></circle>
+                                        </svg>
+                                        <span id="author-name-text">...</span>
+                                    </div>
+                                </div>
+
+                                <!-- Search and Sort Filters -->
+                                <div class="table-filters-container" id="table-filters-container">
+                                    <!-- Search input -->
+                                    <div class="filter-search-wrapper">
+                                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="filter-search-icon">
+                                            <circle cx="11" cy="11" r="8"></circle>
+                                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                        </svg>
+                                        <input type="text" id="filter-search-input" placeholder="Tìm kiếm theo mô tả/caption..." autocomplete="off">
+                                    </div>
+                                    
+                                    <!-- Sort select -->
+                                    <div class="filter-sort-wrapper">
+                                        <span class="filter-sort-label">Sắp xếp:</span>
+                                        <div class="custom-select-container" id="sort-custom-select-container">
+                                            <div class="custom-select-trigger">
+                                                <span>Mặc định (Mới nhất)</span>
+                                                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="arrow-icon">
+                                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                                </svg>
+                                            </div>
+                                            <div class="custom-select-options">
+                                                <div class="custom-option active" data-value="default">Mặc định (Mới nhất)</div>
+                                                <div class="custom-option" data-value="views-desc">Lượt xem: Cao đến thấp</div>
+                                                <div class="custom-option" data-value="views-asc">Lượt xem: Thấp đến cao</div>
+                                                <div class="custom-option" data-value="duration-desc">Thời lượng: Dài đến ngắn</div>
+                                                <div class="custom-option" data-value="duration-asc">Thời lượng: Ngắn đến dài</div>
+                                            </div>
+                                        </div>
+                                        <input type="hidden" id="filter-sort-select" value="default">
+                                    </div>
+                                </div>
+
+                                <!-- Reels Table Container -->
+                                <div class="table-responsive">
+                                    <table class="reels-table">
+                                        <thead>
+                                            <tr>
+                                                <th class="col-stt">STT</th>
+                                                <th class="col-thumb">Hình ảnh</th>
+                                                <th class="col-caption">Mô tả / Caption</th>
+                                                <th class="col-duration">Thời lượng</th>
+                                                <th class="col-views">Lượt xem</th>
+                                                <th class="col-actions">Tải xuống</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="reels-tbody">
+                                            <!-- Dynamic rows will be inserted here by script.js -->
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <!-- Table Pagination Section -->
+                                <div class="table-pagination-container" id="table-pagination-container" style="display: none;">
+                                    <button class="btn-page" id="btn-prev-page" disabled>
+                                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5">
+                                            <polyline points="15 18 9 12 15 6"></polyline>
+                                        </svg>
+                                        <span>Trang trước</span>
+                                    </button>
+                                    <span class="page-info" id="page-info">Trang 1 / 1</span>
+                                    <button class="btn-page" id="btn-next-page" disabled>
+                                        <span>Trang sau</span>
+                                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5">
+                                            <polyline points="9 18 15 12 9 6"></polyline>
+                                        </svg>
+                                    </button>
+                                </div>
+
+                                <!-- Load More Section -->
+                                <div class="load-more-container" id="load-more-container" style="display: none;">
+                                    <button class="btn-load-more" id="btn-load-more">
+                                        <span>Xem thêm video</span>
+                                        <svg class="chevron-down-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5">
+                                            <polyline points="6 9 12 15 18 9"></polyline>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features-section" id="features">
+            <div class="container">
+                <h2 class="section-title">Tại sao chọn công cụ của chúng tôi?</h2>
+                <div class="features-grid">
+                    <!-- Feature 1 -->
+                    <div class="feature-card">
+                        <div class="feature-icon-box speed">
+                            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor"
+                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">Tốc độ quét tối ưu</h3>
+                        <p class="feature-desc">Phân tích liên kết Trang cá nhân/Fanpage hoặc UID và nạp danh sách Reels cực nhanh chỉ trong vài giây.</p>
+                    </div>
+
+                    <!-- Feature 2 -->
+                    <div class="feature-card">
+                        <div class="feature-icon-box free">
+                            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor"
+                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">Hoàn toàn miễn phí</h3>
+                        <p class="feature-desc">Không giới hạn số lượt quét hay số video tải xuống, phục vụ cộng đồng 100% miễn phí trọn đời.</p>
+                    </div>
+
+                    <!-- Feature 3 -->
+                    <div class="feature-card">
+                        <div class="feature-icon-box secure">
+                            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor"
+                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">Bảo mật tuyệt đối</h3>
+                        <p class="feature-desc">Không cần cung cấp thông tin đăng nhập Facebook cá nhân của bạn, giữ bảo mật tài khoản 100%.</p>
+                    </div>
+
+                    <!-- Feature 4 -->
+                    <div class="feature-card">
+                        <div class="feature-icon-box quality">
+                            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor"
+                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="8 12 11 15 16 9"></polyline>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">Chất lượng cao gốc</h3>
+                        <p class="feature-desc">Tải video với định dạng HD hoặc SD nguyên bản cùng tốc độ download ổn định từ máy chủ Facebook.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How to Download Section -->
+        <section class="how-to-section" id="how-to-download">
+            <div class="container">
+                <h2 class="section-title">Hướng dẫn quét và tải hàng loạt video Reels Facebook</h2>
+                <div class="steps-container">
+                    <!-- Step 1 -->
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h3 class="step-title">Sao chép liên kết Trang cá nhân / Fanpage</h3>
+                        <p class="step-desc">Truy cập Facebook, sao chép địa chỉ liên kết (URL) của Trang cá nhân hoặc Fanpage bạn muốn quét Reels (hoặc copy trực tiếp mã UID của họ).</p>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h3 class="step-title">Nhập thông tin và số lượng</h3>
+                        <p class="step-desc">Quay lại trang ScanReels, dán đường dẫn vừa sao chép hoặc nhập UID vào hộp tìm kiếm, nhập số lượng Reels muốn quét rồi nhấn **Quét video**.</p>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <h3 class="step-title">Tải hàng loạt video từ bảng</h3>
+                        <p class="step-desc">Hệ thống sẽ hiển thị bảng Reels. Bạn chỉ cần nhấn các nút **HD** hoặc **SD** để tải nhanh video mong muốn, hoặc bấm **Xem thêm** để quét tiếp.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section" id="faq">
+            <div class="container">
+                <h2 class="section-title">Câu hỏi thường gặp (FAQ)</h2>
+                <div class="faq-accordion">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Làm thế nào để tìm được mã UID Facebook để quét Reels?</span>
+                            <svg class="chevron-icon" viewBox="0 0 24 24" width="18" height="18" fill="none"
+                                stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Bạn chỉ cần dán liên kết Trang cá nhân/Fanpage Facebook vào các công cụ tìm UID trực tuyến miễn phí (ví dụ: FindUID, Lookup-ID...) để lấy dãy số UID nhanh nhất, hoặc bạn có thể dán trực tiếp link Facebook vào ô nhập liệu của chúng tôi để hệ thống tự động xử lý.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Quét và tải Reels từ Trang cá nhân có bị giới hạn số lượng không?</span>
+                            <svg class="chevron-icon" viewBox="0 0 24 24" width="18" height="18" fill="none"
+                                stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Hoàn toàn không. Bạn có thể nhập số lượng ban đầu tùy ý và nhấn nút "Xem thêm video" ở cuối bảng kết quả để tiếp tục quét thêm nhiều video Reels từ Facebook mà không bị giới hạn.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Tôi có cần đăng nhập tài khoản Facebook để quét video không?</span>
+                            <svg class="chevron-icon" viewBox="0 0 24 24" width="18" height="18" fill="none"
+                                stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Không. Công cụ này hoạt động hoàn toàn trực tuyến và bảo mật thông tin 100%. Chúng tôi không bao giờ yêu cầu bạn cung cấp tài khoản, mật khẩu hay token Facebook cá nhân.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 ScanReels Facebook. Tất cả quyền được bảo lưu. Phát triển dựa trên tinh thần hỗ trợ cộng đồng.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <script src="script.js?v=1.1.0"></script>
+</body>
+
+</html>

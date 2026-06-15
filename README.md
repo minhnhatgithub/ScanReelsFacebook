@@ -84,6 +84,5 @@ Công cụ này được phát triển dựa trên mục đích học tập, ngh
 
 Nếu bạn gặp khó khăn trong quá trình sử dụng hoặc cần phát triển thêm tính năng khác, hãy liên hệ:
 - **Facebook cá nhân:** [Facebook/khumnumm](https://www.facebook.com/khumnumm)
-- **Tác giả:** Minh Nhật - *Hỗ trợ thiết kế bởi Gemini*
-
+- **Tác giả:** Minh Nhật
 *Chúc các bạn quét và quản lý Reels thật hiệu quả! ⭐ Đừng quên đánh dấu sao (Star) nếu bạn thấy công cụ này hữu ích nhé!*

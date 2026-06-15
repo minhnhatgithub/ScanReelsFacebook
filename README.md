@@ -1,4 +1,5 @@
 # ⚡ ScanReels - Công cụ Quét & Tải Hàng Loạt Video Reels Facebook từ Profile & Fanpage
+
 <img width="1911" height="966" alt="image" src="https://github.com/user-attachments/assets/018969ab-609d-4329-8be7-ed800a533cb4" />
 🔗 **Trải nghiệm trực tuyến tại:** [minhnhatgithub.github.io/ScanReelsFacebook](https://minhnhatgithub.github.io/ScanReelsFacebook)
 
@@ -59,23 +60,6 @@ Công cụ được tối ưu hóa giao diện đẹp mắt, hiệu ứng mượ
 
 ---
 
-## 🚀 Hướng dẫn cài đặt & Chạy Local
-
-### 1. Chuẩn bị mã nguồn Client
-Bạn chỉ cần tải toàn bộ thư mục này và đưa vào thư mục máy chủ cục bộ (Local Server) của bạn:
-- **Nếu dùng XAMPP:** Đưa vào thư mục `C:\xampp\htdocs\scanreels`
-- **Nếu dùng VS Code:** Mở thư mục và sử dụng extension **Live Server** để chạy.
-- Truy cập qua đường dẫn: `http://localhost/scanreels/index.html` hoặc `http://127.0.0.1:5500/`
-
-### 2. Thiết lập Cloudflare Worker (Nếu muốn tự host API)
-Nếu bạn muốn sử dụng API Server của riêng mình:
-1. Đăng ký tài khoản [Cloudflare](https://dash.cloudflare.com).
-2. Tạo một Cloudflare Worker mới.
-3. Sử dụng mã nguồn của file `index.js` (Worker Router) và `FacebookItems/getListReels.js` được lưu trong tài liệu để dán vào editor của Cloudflare.
-4. Nhấn **Save and Deploy**.
-5. Cập nhật đường dẫn `apiUrl` trong file [script.js](file:///d:/Xamp/htdocs/script.js) của Client để trỏ tới link Worker mới của bạn.
-
----
 
 ## 📖 Hướng dẫn sử dụng
 
@@ -98,7 +82,7 @@ Công cụ này được phát triển dựa trên mục đích học tập, ngh
 
 ## 📞 Liên hệ hỗ trợ
 
-Nếu bạn gặp khó khăn trong quá trình cài đặt hoặc cần phát triển thêm tính năng khác, hãy liên hệ:
+Nếu bạn gặp khó khăn trong quá trình sử dụng hoặc cần phát triển thêm tính năng khác, hãy liên hệ:
 - **Facebook cá nhân:** [Facebook/khumnumm](https://www.facebook.com/khumnumm)
 - **Tác giả:** Minh Nhật (ScanReels Dev Team)
 
